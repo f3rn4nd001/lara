@@ -1,0 +1,75 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+ 
+ <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <form [formGroup]="form" (ngSubmit)="submit()">
+    
+          <div class="modal-body">
+         
+              <div class="group">      
+                 <input type="text" formControlName="Nombre"
+                 id="Nombre" required="required">
+                <span class="highlight"></span>
+                <span class="bar"></span>
+                <label >Nombre y Apellido</label>
+                <div *ngIf="f.Nombre.touched && f.Nombre.invalid" class="alert alert-danger">
+                  <div *ngIf="f.Nombre.errors.required">*Nombre is required.</div>
+                  <div *ngIf="f.Nombre.errors.pattern">*The Nombre must only contain letters.</div>
+              </div>
+               </div>
+                
+              <div class="group">    
+                <input formControlName="Correo"
+                id="Correo" type="text" required="required">
+                <span class="highlight"></span>
+                <span class="bar"></span>
+                <label >Email</label>
+                <div *ngIf="f.Correo.touched && f.Correo.invalid" class="alert alert-danger">
+                  <span *ngIf="f.Correo.errors.required">*Correo is required.</span>
+                  <span *ngIf="f.Correo.errors.Correo">*The Correo must be a valid Correo address.</span>
+              </div>
+              </div>
+    
+              <div class="group" >  
+                <input formControlName="Contraseña"
+                id="Contraseña" ID="txtPassword" type="Password" Class="form-control" required>
+                
+                <span class="highlight"> 
+              </span>
+                
+              <button id="show_password" style="position: absolute; height: 87%; width: 9%; top: 7%; left: 90%; " class="btn" type="button" onclick="mostrarPassword()"> <span class="fa fa-eye-slash icon"></span> </button>
+                <span class="bar"></span>
+                
+                <label >Contraseña </label>
+               
+              </div>
+      
+              <div class="group">      
+                <input formControlName="confContraseña"
+                id="confContraseña" type="password" required>
+                <span class="highlight"></span>
+                <span class="bar"></span>
+                <label>Confirmar Contraseña</label>
+              </div>
+    
+              
+         
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary" type="submit" [disabled]="!form.valid">Understood</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+<router-outlet></router-outlet>
